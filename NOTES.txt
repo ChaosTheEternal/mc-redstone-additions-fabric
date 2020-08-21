@@ -1,0 +1,45 @@
+Ideas for:
+    Signal Extended Observer
+    * Can I hide the "countdown" property?  Or make it truly a private property of the block?
+
+    Glaze Container
+    * Need to get the emulated block stuff working better
+        * What tool breaks the block
+        * Rendering (may drop what I'm trying to copy from other mods/@error and use @TheGreyGhost's MBE04 example)
+            * Will any changes in that cause issues with what I'm otherwise trying to do?
+        * Can you do "string" properties in Minecraft?  So I can have it say which block it contains (for debug)?
+            * I don't believe so, since Forge says "all combinations of properties are generated on startup" so a string would be overkill
+
+    Directed Redstone Wiring / Redstone Rod
+    * Like an end rod
+        * Since 1.16.2 changed chains to be placable like end rods without light... can just fall back to "like an end rod"
+        * That would mean I don't have to worry about branching or linking to redstone
+            * Though if I were to "do it like a chain" that could mean allowing these to be waterlogged
+            * Need to check the pre release, do chains break when hit by flowing water?
+    * It is powered by/powering blocks they are attached to
+        * Don't receive or give off power any other way
+        * They are one way only (like a repeater, power in one side, power out the other)
+            * That means, if you want "two way" powering, you'll need two lines (one going each way)
+    * Works like redstone dust and has signal drop-off
+        * Do I then need to consider a "vertical redstone repeater" to help with this?
+            * No, the expectation will be to feed the rods into a block to power it, then continue the rods (which'll pick back up at 15 power)
+        
+    * Recipe?
+        * If it is like an end rod... could just do the end rod recipe but add in redstone dust?
+            * Blaze Rod + Popped Chorus Fruit + Redstone Dust
+                * 1 Dust for 4 Redstone Rods?  Or 4 Dust for 4 Redstone Rods?
+            * End Rod + Redstone Dust
+        * Or should I give an option that is easier to get early on?
+            * 3 Redstone Dust in a line
+        * Why not both?  But make the version using end rod components give more than just using redstone dust
+
+    Configurable Pistons
+    * Will have an interface when interacted with, like a chest or furnace
+    * On one side, you can put in (up to 4? or more?) sticks/pistons/whatever to specify how far the piston extends
+    * On the other, you can put in up to the same number of slime balls/slime blocks to specify how many blocks in a line it can pull
+    * The piston face will either need a specific graphic to support both or I'll have to see if you can override the model or a texture
+        * If no slime, use the regular piston face, if slime, use the sticky piston face
+    * Don't know if I can "fix" it so redstone dust doesn't break when the piston state changes and the dust is on any side except the front
+        * Meaning, the dust is going along the side or back, obviously it should break if it's on the side that pushes
+    * Recipe?
+        * Should it be as "cheap" as a normal piston or have some other cost in place of the redstone dust or iron ingot?
