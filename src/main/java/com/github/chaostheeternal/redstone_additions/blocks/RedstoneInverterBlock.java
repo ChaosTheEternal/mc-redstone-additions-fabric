@@ -21,7 +21,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
 
 public class RedstoneInverterBlock extends AbstractRedstoneGateBlock {
     public static final BooleanProperty BURNED_OUT = BooleanProperty.of("burned_out");
@@ -29,7 +28,7 @@ public class RedstoneInverterBlock extends AbstractRedstoneGateBlock {
     public static final Block BLOCK = new RedstoneInverterBlock(FabricBlockSettings.of(Material.SUPPORTED).breakInstantly().sounds(BlockSoundGroup.WOOD));
     public RedstoneInverterBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(BURNED_OUT, false));
+        this.setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(BURNED_OUT, false));
     }
     public static BlockItem getBlockItem() {
         return new BlockItem(BLOCK, new Item.Settings().group(ItemGroup.REDSTONE));
@@ -38,11 +37,6 @@ public class RedstoneInverterBlock extends AbstractRedstoneGateBlock {
     @Override
     protected int getUpdateDelayInternal(BlockState state) {
         return 0;
-    }
-    @Override
-    protected int getMaxInputLevelSides(WorldView world, BlockPos pos, BlockState state) {
-        // TODO Auto-generated method stub
-        return super.getMaxInputLevelSides(world, pos, state);
     }
 
     @Environment(EnvType.CLIENT)
@@ -92,13 +86,11 @@ public class RedstoneInverterBlock extends AbstractRedstoneGateBlock {
         }
     }
 
-    //TODO: Need to figure out a "can connect redstone" method, below is what was from Forge
-    // @Override
-    // public boolean canConnectRedstone(BlockState state, World world, BlockPos pos, Direction side) {
-    //     if (side == null) return false; //This seems to fire if redstone is placed on a neighboring block on a different Y
-    //     Direction myFacing = state.get(FACING);
-    //     return (myFacing == side || myFacing == side.getOpposite()); //Input is the way this block is facing, output is opposite the way this block is facing
-    // }
+    public boolean canRedstoneConnect(BlockState state, Direction side) {
+        if (side == null) return false; //This seems to fire if redstone is placed on a neighboring block on a different Y
+        Direction myFacing = state.get(FACING);
+        return (myFacing == side || myFacing == side.getOpposite()); //Input is the way this block is facing, output is opposite the way this block is facing
+    }
 
     //#region Burnout Logic
     private static final java.util.Map<World, java.util.List<RedstoneInverterBlock.Toggle>> BURNED_INVERTERS = new java.util.WeakHashMap<>();

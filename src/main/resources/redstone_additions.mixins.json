@@ -1,0 +1,11 @@
+{
+    "required": true,
+    "package": "com.github.chaostheeternal.redstone_additions.mixins",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "RedstoneWireMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

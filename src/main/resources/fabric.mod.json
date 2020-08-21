@@ -24,7 +24,9 @@
     ],
     "server": []
   },
-  "mixins": [],
+  "mixins": [
+    "redstone_additions.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.9.2",
     "fabric": "*"

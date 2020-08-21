@@ -21,6 +21,8 @@ public class RedstoneAdditionsMod implements ModInitializer {
         log(Level.INFO, "Initializing");
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, RedstoneInverterBlock.ID), RedstoneInverterBlock.BLOCK);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, RedstoneInverterBlock.ID), RedstoneInverterBlock.getBlockItem());
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, InstantOffRepeaterBlock.ID), InstantOffRepeaterBlock.BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, InstantOffRepeaterBlock.ID), InstantOffRepeaterBlock.getBlockItem());
     }
 
     public static void log(Level level, String message){
