@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "redstone_additions",
+  "version": "${version}",
+  "name": "Redstone Additions",
+  "description": "WIP mod that adds new redstone components to compact some circuits/items.",
+  "authors": [
+    "ChaosTheEternal"
+  ],
+  "contributors": [],
+  "contact": {
+    "homepage": "https://github.com/ChaosTheEternal/",
+    "sources": "https://github.com/ChaosTheEternal/"
+  },
+  "license": "MIT",
+  "icon": "assets/redstone_additions/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.chaostheeternal.redstone_additions.RedstoneAdditionsMod"
+    ],
+    "client": [
+      "com.github.chaostheeternal.redstone_additions.RedstoneAdditionsModClient"
+    ],
+    "server": []
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.9.2",
+    "fabric": "*"
+  }
+}
