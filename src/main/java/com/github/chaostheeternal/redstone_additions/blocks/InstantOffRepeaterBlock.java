@@ -2,6 +2,8 @@ package com.github.chaostheeternal.redstone_additions.blocks;
 
 import java.util.Random;
 
+import com.github.chaostheeternal.redstone_additions.interfaces.IRedstoneWireMixin;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -9,7 +11,6 @@ import net.minecraft.block.AbstractRedstoneGateBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
-import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -27,16 +28,14 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 
-public class InstantOffRepeaterBlock extends AbstractRedstoneGateBlock {
+public class InstantOffRepeaterBlock extends AbstractRedstoneGateBlock implements IRedstoneWireMixin {
     public static final IntProperty DELAY = Properties.DELAY;
     public static final String ID = "instant_off_repeater";
-    public static final Block BLOCK = new InstantOffRepeaterBlock(
-            FabricBlockSettings.of(Material.SUPPORTED).breakInstantly().sounds(BlockSoundGroup.WOOD));
+    public static final Block BLOCK = new InstantOffRepeaterBlock(FabricBlockSettings.of(Material.SUPPORTED).breakInstantly().sounds(BlockSoundGroup.WOOD));
 
     public InstantOffRepeaterBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(
-                getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(DELAY, 1));
+        this.setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(DELAY, 1));
     }
 
     public static BlockItem getBlockItem() {
@@ -104,12 +103,11 @@ public class InstantOffRepeaterBlock extends AbstractRedstoneGateBlock {
         return (myFacing == side || myFacing == side.getOpposite()); //Input is the way this block is facing, output is opposite the way this block is facing
     }
 
-    @Environment(EnvType.CLIENT)
-    public static int getWireColor(int powerLevel) {
-        if (powerLevel != 0) {
+	public static int getWireColor(BlockState state) {
+        if (state.get(POWERED)) {
             return -16777216 | 255 << 16 | 51 << 8 | 0;
         } else {
             return -16777216 | 77 << 16 | 0 << 8 | 0;
         }
-    }
+	}
 }

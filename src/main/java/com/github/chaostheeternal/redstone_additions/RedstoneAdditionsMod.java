@@ -19,10 +19,15 @@ public class RedstoneAdditionsMod implements ModInitializer {
     @Override
     public void onInitialize() {
         log(Level.INFO, "Initializing");
+        // Any way to automate this, only passing in the class name?
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, RedstoneInverterBlock.ID), RedstoneInverterBlock.BLOCK);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, RedstoneInverterBlock.ID), RedstoneInverterBlock.getBlockItem());
+
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, InstantOffRepeaterBlock.ID), InstantOffRepeaterBlock.BLOCK);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, InstantOffRepeaterBlock.ID), InstantOffRepeaterBlock.getBlockItem());
+
+        Registry.register(Registry.BLOCK, new Identifier(MOD_ID, SignalExtendedObserverBlock.ID), SignalExtendedObserverBlock.BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, SignalExtendedObserverBlock.ID), SignalExtendedObserverBlock.getBlockItem());
     }
 
     public static void log(Level level, String message){

@@ -2,6 +2,8 @@ package com.github.chaostheeternal.redstone_additions.blocks;
 
 import java.util.Random;
 
+import com.github.chaostheeternal.redstone_additions.interfaces.IRedstoneWireMixin;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -22,7 +24,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class RedstoneInverterBlock extends AbstractRedstoneGateBlock {
+public class RedstoneInverterBlock extends AbstractRedstoneGateBlock implements IRedstoneWireMixin {
     public static final BooleanProperty BURNED_OUT = BooleanProperty.of("burned_out");
     public static final String ID = "redstone_inverter";
     public static final Block BLOCK = new RedstoneInverterBlock(FabricBlockSettings.of(Material.SUPPORTED).breakInstantly().sounds(BlockSoundGroup.WOOD));

@@ -12,6 +12,6 @@ public class RedstoneAdditionsModClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(RedstoneInverterBlock.BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(InstantOffRepeaterBlock.BLOCK, RenderLayer.getCutout());
-        //ColorProviderRegistry.BLOCK.register((block, pos, world, layer) -> { return null; }, InstantOffRepeaterBlock.BLOCK);
+        ColorProviderRegistry.BLOCK.register((state, pos, world, layer) -> InstantOffRepeaterBlock.getWireColor(state), InstantOffRepeaterBlock.BLOCK);
     }
 }
