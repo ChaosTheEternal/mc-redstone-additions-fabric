@@ -15,6 +15,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
+import net.minecraft.item.AutomaticItemPlacementContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -98,7 +99,22 @@ public class GlazeContainerBlock extends BlockWithEntity {
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.isOf(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof Inventory) { ItemScatterer.spawn(world, pos, (Inventory) blockEntity); }
+            //#region Container Break Logic
+            //This just breaks both blocks into components, which I only want if I could manage the tool/hardness/blast resistance
+            //if (blockEntity instanceof Inventory) { ItemScatterer.spawn(world, pos, (Inventory) blockEntity); }
+            //#endregion
+            //#region Place Contained Item Logic
+            //This places the contained block in place, but I lose the container if it's filled
+            GlazeContainerBlockEntity container = (GlazeContainerBlockEntity)blockEntity;
+            if (!container.isEmpty()) {
+                ItemStack stack = container.getStack(0); //Get the contained item
+                BlockItem blockItem = (BlockItem)stack.getItem(); //As a block item, since that's all this can contain
+                blockItem.place(new AutomaticItemPlacementContext(world, pos, state.get(FACING), stack, Direction.UP)); //Then place the contained item where the container was
+                container.clear(); //So there's nothing left to eject beyond the container itself, hopefully...
+                //TODO: eject the container itself toward the player, kinda like a dispenser?  But that means making a new block item of the container
+                // Have to do it that way instead of leaving it to the super onStateReplaced since it doesn't seem to eject a block if a new one replaces it
+            }
+            //#endregion
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }

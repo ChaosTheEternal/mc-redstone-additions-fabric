@@ -1,0 +1,16 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"STR",
+		"SSS"
+	],
+	"key": {
+        "S": { "item": "stone" },
+        "T": { "item": "redstone_torch" },
+        "R": { "item": "redstone" }
+	},
+	"result": {
+		"item": "redstone_additions:redstone_inverter",
+		"count": 1
+	}
+}

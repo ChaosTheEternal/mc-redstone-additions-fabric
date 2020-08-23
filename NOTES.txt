@@ -3,12 +3,39 @@ Ideas for:
     * Can I hide the "countdown" property?  Or make it truly a private property of the block?
 
     Glaze Container
-    * Need to get the emulated block stuff working better
-        * What tool breaks the block
-        * Rendering (may drop what I'm trying to copy from other mods/@error and use @TheGreyGhost's MBE04 example)
-            * Will any changes in that cause issues with what I'm otherwise trying to do?
-        * Can you do "string" properties in Minecraft?  So I can have it say which block it contains (for debug)?
-            * I don't believe so, since Forge says "all combinations of properties are generated on startup" so a string would be overkill
+    * Need to get the emulated block stuff working, if possible
+        * What tool breaks the block, what light level the block is, what blast resistance and hardness it has
+            * This might not be possible on the Fabric side, so I may need to reconsider going the route of "breaking it places the contained block and drops the container"
+        * If/When I get light level stuff working, will this have the same issue I was having with Forge where it wouldn't tell the client to update world lighting?
+            * That might've been me, though, needing to call some method to tell it "hey, lighting changed" and I just wasn't
+    * Other option is, scrap the container logic and just make "Glazed XXX" where XXX is the block
+        * Only thinking of including solid, non-gravity afflicted blocks, e.g.
+            * Cobblestone and variants, Stone, Smooth Stone, Stone Brick (and variants)
+            * Brick
+            * Diorite, Andesite, Granite (and smooth versions)
+            * Sea Lantern and other aquatic blocks
+            * Nether related blocks, End related blocks, etc.
+        * Problem of that route is, there are a *lot* of blocks to consider or add, and may need reasons to exclude
+    * Considerations
+        * In general, these are expected to be used where you would be using slime/honey blocks to move multiple blocks, so minimal visiblity
+        * Cobblestone and variants
+            * For: it's a standard block that everyone has, variants are for appearance
+            * Against: it's supposed to simulate cobbled together stone, which would be harder to "glaze" like this
+        * Sand and Gravel (or other gravity afflicted blocks)
+            * Against: stock gravity blocks I don't believe can be pulled anyways
+        * Dirt and Grass
+            * Against: same consideration as cobblestone (glazing dirt particles?)
+        * Clay and Terracotta
+            * Against: Terracotta becomes glazed terracotta, clay is kinda like cobblestone (and becomes brick, which I would include)
+        * Stone/Smooth Stone/Stone Brick/Bricks
+            * For: it's a cleaner building block
+            * Against: ... nothing, really
+        * Diorite, Andesite, Granite (and smooth versions)
+            * For: alternatives of stone, really
+            * Against: consideration of the regular versions like cobble (though don't appear like it), otherwise these are fine
+        * Aquatic Blocks, Nether Blocks, End Blocks
+            * For: many unrefined are cleaner, refined are obvious
+            * Against: 
 
     Directed Redstone Wiring / Redstone Rod
     * Like an end rod
@@ -22,8 +49,7 @@ Ideas for:
             * That means, if you want "two way" powering, you'll need two lines (one going each way)
     * Works like redstone dust and has signal drop-off
         * Do I then need to consider a "vertical redstone repeater" to help with this?
-            * No, the expectation will be to feed the rods into a block to power it, then continue the rods (which'll pick back up at 15 power)
-        
+            * No, the expectation will be to feed the rods into a block to power it, then continue the rods (which'll pick back up at 15 power)        
     * Recipe?
         * If it is like an end rod... could just do the end rod recipe but add in redstone dust?
             * Blaze Rod + Popped Chorus Fruit + Redstone Dust
