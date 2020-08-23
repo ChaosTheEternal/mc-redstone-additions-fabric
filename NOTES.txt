@@ -35,7 +35,8 @@ Ideas for:
             * Against: consideration of the regular versions like cobble (though don't appear like it), otherwise these are fine
         * Aquatic Blocks, Nether Blocks, End Blocks
             * For: many unrefined are cleaner, refined are obvious
-            * Against: 
+            * Against: no reason except for maybe unrefined versions (netherrack, soul soil, end rock, etc.)
+        * Also, would likely need to make furnace recipes to convert the glazed versions back to regular (burning off the glaze)
 
     Directed Redstone Wiring / Redstone Rod
     * Like an end rod
