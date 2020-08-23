@@ -15,6 +15,6 @@ import net.minecraft.util.math.Direction;
 public class RedstoneWireMixin {
     @Inject(at = @At(value = "HEAD"), method = "connectsTo(Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/Direction;)Z", cancellable = true)
     private static void connectsToMixin(BlockState state, Direction dir, CallbackInfoReturnable<Boolean> cir) {
-		if(state.getBlock() instanceof IRedstoneWireMixin) { cir.setReturnValue(((IRedstoneWireMixin) state.getBlock()).canRedstoneConnect(state, dir)); }
+        if(state.getBlock() instanceof IRedstoneWireMixin) { cir.setReturnValue(((IRedstoneWireMixin) state.getBlock()).canRedstoneConnect(state, dir)); }
     }
 }
