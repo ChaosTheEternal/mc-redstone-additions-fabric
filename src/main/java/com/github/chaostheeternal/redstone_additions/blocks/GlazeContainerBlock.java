@@ -86,7 +86,6 @@ public class GlazeContainerBlock extends BlockWithEntity {
                 BlockState update = state.with(FILLED, true);
                 world.setBlockState(pos, update, 11);
                 world.markDirty(pos, blockEntity);
-            } else {
             }
         }
         return ActionResult.SUCCESS;
