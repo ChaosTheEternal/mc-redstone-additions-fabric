@@ -22,7 +22,6 @@ import org.apache.logging.log4j.Logger;
 public class GlazeContainerBlockEntity extends BlockEntity implements Inventory {
     public static Logger LOGGER = LogManager.getLogger();
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-    private long SomeDumbIndicator = 0;
 //#region Inventory Implementation
     @Override
     public void clear() {
@@ -36,7 +35,7 @@ public class GlazeContainerBlockEntity extends BlockEntity implements Inventory 
 
     @Override
     public boolean isEmpty() {
-        return inventory.isEmpty();
+        return inventory.get(0).isEmpty();
     }
 
     @Override
@@ -70,47 +69,50 @@ public class GlazeContainerBlockEntity extends BlockEntity implements Inventory 
     }
 //#endregion
 //#region Block Emulation (Caching)
-    // private Block _emulatedBlock = Blocks.AIR;
-    // private BlockState _emulatedState = Blocks.AIR.getDefaultState();
-    // public void addBlockToContainer(ItemStack stack, Block block) {
-    //     items.set(0, stack.split(1));
-    //     LOGGER.info("setEmulatedBlock::{}", block.toString());
-    //     _emulatedBlock = block;
-    //     _emulatedState = block.getDefaultState();
-    // }
-    // public void loadEmulatedBlock() {
-    //     ItemStack stack = items.get(0);
-    //     Block block = Block.getBlockFromItem(stack.getItem());
-    //     LOGGER.info("setEmulatedBlock::{}", block.toString());
-    //     _emulatedBlock = block;
-    //     _emulatedState = _emulatedBlock.getDefaultState();
-    // }
-    // public Block getEmulatedBlock() { 
-    //     LOGGER.info("getEmulatedBlock::{}", _emulatedBlock.toString());
-    //     return _emulatedBlock;
-    // }
-    // public BlockState getEmulatedBlockState() { 
-    //     LOGGER.info("getEmulatedBlockState::{}", _emulatedState.toString());
-    //     return _emulatedState;
-    // }
-//#endregion
-//#region Block Emulation (Fetching)
     private int logCycle = 0;
+    private Block _emulatedBlock = Blocks.AIR;
+    private BlockState _emulatedState = Blocks.AIR.getDefaultState();
     public void addBlockToContainer(ItemStack stack, Block block) {
         inventory.set(0, stack.split(1)); //I know this is going in correctly... since breaking the block knows what items are inside to eject...
+        LOGGER.info("setEmulatedBlock::{}", block.toString());
+        _emulatedBlock = block;
+        _emulatedState = block.getDefaultState();
     }
-    public Block getEmulatedBlock() { 
-        return Block.getBlockFromItem(inventory.get(0).getItem());
+    public void loadEmulatedBlock() {
+        ItemStack stack = inventory.get(0);
+        Block block = Block.getBlockFromItem(stack.getItem());
+        LOGGER.info("setEmulatedBlock::{}", block.toString());
+        _emulatedBlock = block;
+        _emulatedState = _emulatedBlock.getDefaultState();
     }
-    public BlockState getEmulatedBlockState() { 
-        //...but why does this give me AIR?  It's almost like the renderer gets a different block entity
-        BlockState state = Block.getBlockFromItem(inventory.get(0).getItem()).getDefaultState();
+    public Block getEmulatedBlock() {
+        return _emulatedBlock;
+    }
+    public BlockState getEmulatedBlockState() {
         if (logCycle % 80 == 0) {
-            LOGGER.info("getEmulatedBlock::{}::{}::{}", getPos().toString(), inventory.toString(), SomeDumbIndicator);
+            LOGGER.info("getEmulatedBlock::{}", inventory.toString());
             logCycle = 0;
         } logCycle++;
-        return state;
+        return _emulatedState;
     }
+//#endregion
+//#region Block Emulation (Fetching)
+    // private int logCycle = 0;
+    // public void addBlockToContainer(ItemStack stack, Block block) {
+    //     inventory.set(0, stack.split(1)); //I know this is going in correctly... since breaking the block knows what items are inside to eject...
+    // }
+    // public Block getEmulatedBlock() { 
+    //     return Block.getBlockFromItem(inventory.get(0).getItem());
+    // }
+    // public BlockState getEmulatedBlockState() { 
+    //     //...but why does this give me AIR?  It's almost like the renderer gets a different block entity
+    //     BlockState state = Block.getBlockFromItem(inventory.get(0).getItem()).getDefaultState();
+    //     if (logCycle % 80 == 0) {
+    //         LOGGER.info("getEmulatedBlock::{}::{}", getPos().toString(), inventory.toString());
+    //         logCycle = 0;
+    //     } logCycle++;
+    //     return state;
+    // }
 //#endregion
 
     public static BlockEntityType<GlazeContainerBlockEntity> ENTITY = BlockEntityType.Builder.create(GlazeContainerBlockEntity::new, GlazeContainerBlock.BLOCK).build(null);

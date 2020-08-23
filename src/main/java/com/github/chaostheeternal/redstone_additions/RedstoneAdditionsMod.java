@@ -31,7 +31,7 @@ public class RedstoneAdditionsMod implements ModInitializer {
 
         Registry.register(Registry.BLOCK, new Identifier(MOD_ID, GlazeContainerBlock.ID), GlazeContainerBlock.BLOCK);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, GlazeContainerBlock.ID), GlazeContainerBlock.getBlockItem());
-
+        
         GlazeContainerBlockEntity.ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MOD_ID, GlazeContainerBlock.ID), GlazeContainerBlockEntity.ENTITY);
     }
 }
