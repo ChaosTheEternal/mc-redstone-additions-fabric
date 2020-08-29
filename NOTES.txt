@@ -61,6 +61,9 @@ Ideas for:
         * Why not both?  But make the version using end rod components give more than just using redstone dust
 
     Configurable Pistons
+    * First thing to figure out, can I even modify the piston retraction logic to pull more than the attached block (if piston is sticky)
+        * If I can't, then the only option for this is just "extended" pistons, which did already exist (but doesn't appear to have been updated in a long while)
+        * It doesn't look at first glance that I couldn't, but it definitely doesn't look that simple
     * Will have an interface when interacted with, like a chest or furnace
     * On one side, you can put in (up to 4? or more?) sticks/pistons/whatever to specify how far the piston extends
     * On the other, you can put in up to the same number of slime balls/slime blocks to specify how many blocks in a line it can pull

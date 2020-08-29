@@ -16,6 +16,11 @@ May revisit the ability to lock this repeater at a later date.
 A modified observer that can output a signal for more than one tick.
 
 ## Planned Additions
+These additions are under consideration *if* their implementation seems feasible.  No planned additions are guaranteed to be part of the mod.
+
+### Glazed/Glossy Blocks
+Name not final (crafting will involve 8 of the block and a honey or slime block).  Alternative for the Glaze Container, due to limitations.  A large set of stock blocks from Minecraft except they act like Glazed Terracotta when next to slime/honey blocks being moved by pistons.  The ability to get the original blocks will exist by putting them through a furnace.
+
 ### Directed Redstone Wiring / Redstone Rods
 Some option to make running redstone vertically (up and down) easier and more compact, or to allow an option to run redstone through water.  Like a "redstone ladder" except it can also transmit power down.
 
@@ -28,4 +33,4 @@ A single block container that appears and mostly works like the block inserted b
 #### Why?
 Unlike what Forge offers for the interface, Fabric/Stock doesn't seemingly have methods to "get" a block's hardness or light level (and looking at the Redstone Lamp which would shift light levels based on whether it is on or off I don't see anything), and the method to get blast resistance doesn't offer parameters (meaning, I can't check what block is contained to use its blast resistance).
 
-Forge also doesn't offer a means to dynamically adjust the tool used to mine a block (their "get" tool method has no parameters as well), but what I had got me closer.  Best option I was considering otherwise was, when the glaze container was "broken" it would place the contained block and just drop the container.  That would work for both, but then I still have the issue with Fabric/Stock not being able to adjust the light level.
+Forge also doesn't offer a means to dynamically adjust the tool used to mine a block (their "get" tool method has no parameters as well), but what I had got me closer.  Best option I was considering otherwise was, when the glaze container was "broken" it would place the contained block and just drop the container.  That would work for both, but then I still have the issue with Fabric/Stock not being able to adjust the light level, and I wasn't able to get that logic working entirely (it would place the contained block but not drop the container).
