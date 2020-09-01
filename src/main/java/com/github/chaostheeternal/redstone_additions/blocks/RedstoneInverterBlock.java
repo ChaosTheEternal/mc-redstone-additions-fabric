@@ -2,6 +2,7 @@ package com.github.chaostheeternal.redstone_additions.blocks;
 
 import java.util.Random;
 
+import com.github.chaostheeternal.redstone_additions.RedstoneAdditionsMod;
 import com.github.chaostheeternal.redstone_additions.interfaces.IRedstoneWireMixin;
 
 import net.fabricmc.api.EnvType;
@@ -19,8 +20,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager.Builder;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
@@ -32,8 +35,9 @@ public class RedstoneInverterBlock extends AbstractRedstoneGateBlock implements 
         super(settings);
         this.setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(POWERED, false).with(BURNED_OUT, false));
     }
-    public static BlockItem getBlockItem() {
-        return new BlockItem(BLOCK, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static void RegisterBlock() {
+        Registry.register(Registry.BLOCK, new Identifier(RedstoneAdditionsMod.MOD_ID, ID), BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(RedstoneAdditionsMod.MOD_ID, ID), new BlockItem(BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
     }
 
     @Override

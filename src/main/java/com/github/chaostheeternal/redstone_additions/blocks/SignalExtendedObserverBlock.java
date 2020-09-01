@@ -2,6 +2,7 @@ package com.github.chaostheeternal.redstone_additions.blocks;
 
 import java.util.Random;
 
+import com.github.chaostheeternal.redstone_additions.RedstoneAdditionsMod;
 import com.github.chaostheeternal.redstone_additions.interfaces.IRedstoneWireMixin;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -19,9 +20,11 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 
@@ -34,9 +37,9 @@ public class SignalExtendedObserverBlock extends ObserverBlock implements IRedst
         super(settings);
         this.setDefaultState(getStateManager().getDefaultState().with(DELAY, 1).with(COUNTDOWN, 0));
     }
-
-    public static BlockItem getBlockItem() {
-        return new BlockItem(BLOCK, new Item.Settings().group(ItemGroup.REDSTONE));
+    public static void RegisterBlock() {
+        Registry.register(Registry.BLOCK, new Identifier(RedstoneAdditionsMod.MOD_ID, ID), BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(RedstoneAdditionsMod.MOD_ID, ID), new BlockItem(BLOCK, new Item.Settings().group(ItemGroup.REDSTONE)));
     }
     
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {

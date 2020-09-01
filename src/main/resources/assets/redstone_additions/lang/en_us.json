@@ -2,5 +2,11 @@
     "block.redstone_additions.redstone_inverter": "Redstone Inverter",
     "block.redstone_additions.instant_off_repeater": "Instant Off Repeater",
     "block.redstone_additions.signal_extended_observer": "Signal Extended Observer",
-    "block.redstone_additions.glaze_container": "Glazed Container"
+    "block.redstone_additions.glossy_stone": "Glossy Stone",
+    "block.redstone_additions.glossy_granite": "Glossy Granite",
+    "block.redstone_additions.glossy_polished_granite": "Glossy Polished Granite",
+    "block.redstone_additions.glossy_diorite": "Glossy Diorite",
+    "block.redstone_additions.glossy_polished_diorite": "Glossy Polished Diorite",
+    "block.redstone_additions.glossy_andesite": "Glossy Andesite",
+    "block.redstone_additions.glossy_polished_andesite": "Glossy Polished Andesite"
 }
