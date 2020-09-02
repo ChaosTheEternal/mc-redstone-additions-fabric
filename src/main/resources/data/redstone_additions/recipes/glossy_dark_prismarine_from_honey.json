@@ -1,0 +1,37 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "glossy_block",
+	"ingredients": [
+		{
+			"item": "minecraft:honey_block"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		},
+		{
+			"item": "minecraft:dark_prismarine"
+		}
+	],
+	"result": {
+		"item": "redstone_additions:glossy_dark_prismarine",
+		"count": 8
+	}
+}

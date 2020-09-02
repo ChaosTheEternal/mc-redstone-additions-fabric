@@ -1,7 +1,7 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "glossy_block",
-  "ingredients": [
+	"type": "minecraft:crafting_shapeless",
+	"group": "glossy_block",
+	"ingredients": [
 		{
 			"item": "minecraft:slime_block"
 		},
@@ -29,9 +29,9 @@
 		{
 			"item": "minecraft:andesite"
 		}
-  ],
-  "result": {
-	"item": "redstone_additions:glossy_andesite",
-	"count": 8
-  }
+	],
+	"result": {
+		"item": "redstone_additions:glossy_andesite",
+		"count": 8
+	}
 }

@@ -11,6 +11,7 @@ import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -41,8 +42,10 @@ public class GlossyBlock extends Block {
         // Purpur Block, Purpur Pillar, End Stone Bricks, Glowstone (incl light), Shroomlight (incl light)
         // Basalt, Polished Basalt, Polished Blackstone, Chiseled Polished Blackstone, Polished Blackstone Bricks
         // Nether Bricks, Chiseled Nether Bricks, Red Nether Bricks
-        // Dark Prismarine, Prismarine Bricks, Sea Lantern (incl light)
         // Honey Comb Block
+        RegisterBlock("glossy_sea_lantern", new Block(AbstractBlock.Settings.of(Material.GLASS, MaterialColor.QUARTZ).strength(0.3F).sounds(BlockSoundGroup.GLASS).lightLevel((state) -> { return 15; })));
+        RegisterBlock("glossy_prismarine_bricks", new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.DIAMOND).requiresTool().strength(1.5F, 6.0F)));
+        RegisterBlock("glossy_dark_prismarine", new Block(AbstractBlock.Settings.of(Material.STONE, MaterialColor.DIAMOND).requiresTool().strength(1.5F, 6.0F)));
     }
     private static void RegisterBlock(String id, Block block) {
         Registry.register(Registry.BLOCK, new Identifier(RedstoneAdditionsMod.MOD_ID, id), block);

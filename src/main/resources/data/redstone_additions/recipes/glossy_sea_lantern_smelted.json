@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_sea_lantern"
+	},
+	"result": "minecraft:sea_lantern",
+	"experience": 0,
+	"cookingtime": 200
+}

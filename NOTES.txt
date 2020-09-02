@@ -5,8 +5,6 @@ Ideas for:
     Glossy Blocks
     * I think, in the GlossyBlocks code file, I have all the blocks considered that I'll be doing
     * Hopefully, most will be able to be handled under that single file
-        * The obvious exceptions are the ones that give off light, they'll need a separate class
-        * Or a unique constructor where I can specify the light level, with the default being 0
     * Considerations
         * In general, these are expected to be used where you would be using slime/honey blocks to move multiple blocks, so minimal visiblity
         * Cobblestone and variants

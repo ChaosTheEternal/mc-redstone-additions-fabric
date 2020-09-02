@@ -31,7 +31,7 @@
 		}
 	],
 	"result": {
-	"item": "redstone_additions:glossy_diorite",
-	"count": 8
+		"item": "redstone_additions:glossy_diorite",
+		"count": 8
 	}
 }

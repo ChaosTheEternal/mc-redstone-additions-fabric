@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_dark_prismarine"
+	},
+	"result": "minecraft:dark_prismarine",
+	"experience": 0,
+	"cookingtime": 200
+}

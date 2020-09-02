@@ -31,7 +31,7 @@
 		}
 	],
 	"result": {
-	"item": "redstone_additions:glossy_granite",
-	"count": 8
+		"item": "redstone_additions:glossy_granite",
+		"count": 8
 	}
 }
