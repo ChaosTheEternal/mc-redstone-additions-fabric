@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_polished_blackstone_bricks"
+	},
+	"result": "minecraft:polished_blackstone_bricks",
+	"experience": 0,
+	"cookingtime": 200
+}

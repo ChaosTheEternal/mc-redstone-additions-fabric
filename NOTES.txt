@@ -4,7 +4,7 @@ Ideas for:
 
     Glossy Blocks
     * I think, in the GlossyBlocks code file, I have all the blocks considered that I'll be doing
-    * Hopefully, most will be able to be handled under that single file
+    * Unless some of the blocks I have listed have facing, everything should be able to be handled in the single file
     * Considerations
         * In general, these are expected to be used where you would be using slime/honey blocks to move multiple blocks, so minimal visiblity
         * Cobblestone and variants

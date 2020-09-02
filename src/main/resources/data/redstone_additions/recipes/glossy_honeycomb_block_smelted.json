@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_honeycomb_block"
+	},
+	"result": "minecraft:honeycomb_block",
+	"experience": 0,
+	"cookingtime": 200
+}

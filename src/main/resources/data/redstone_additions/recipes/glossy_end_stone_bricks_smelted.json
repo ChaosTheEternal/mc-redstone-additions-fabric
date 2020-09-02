@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_end_stone_bricks"
+	},
+	"result": "minecraft:end_stone_bricks",
+	"experience": 0,
+	"cookingtime": 200
+}

@@ -1,0 +1,18 @@
+{
+	"type": "block",
+	"pools": [ {
+		"name": "glossy_chiseled_polished_blackstone",
+		"rolls": 1,
+		"entries": [ {
+			"type": "item",
+			"functions": [ {
+				"function": "copy_name",
+				"source": "block_entity"
+			} ],
+			"name": "redstone_additions:glossy_chiseled_polished_blackstone"
+		} ],
+		"conditions": [ {
+			"condition": "survives_explosion"
+		} ]
+	} ]
+}

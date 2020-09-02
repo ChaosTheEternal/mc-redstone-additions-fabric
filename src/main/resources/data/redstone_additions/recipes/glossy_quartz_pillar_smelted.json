@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_quartz_pillar"
+	},
+	"result": "minecraft:quartz_pillar",
+	"experience": 0,
+	"cookingtime": 200
+}

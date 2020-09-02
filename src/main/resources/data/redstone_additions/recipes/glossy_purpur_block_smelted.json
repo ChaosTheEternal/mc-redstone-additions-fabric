@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_purpur_block"
+	},
+	"result": "minecraft:purpur_block",
+	"experience": 0,
+	"cookingtime": 200
+}

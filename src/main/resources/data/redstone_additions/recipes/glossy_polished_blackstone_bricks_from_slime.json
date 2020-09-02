@@ -1,0 +1,37 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "glossy_block",
+	"ingredients": [
+		{
+			"item": "minecraft:slime_block"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		},
+		{
+			"item": "minecraft:polished_blackstone_bricks"
+		}
+	],
+	"result": {
+		"item": "redstone_additions:glossy_polished_blackstone_bricks",
+		"count": 8
+	}
+}

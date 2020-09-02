@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_quartz_bricks"
+	},
+	"result": "minecraft:quartz_bricks",
+	"experience": 0,
+	"cookingtime": 200
+}

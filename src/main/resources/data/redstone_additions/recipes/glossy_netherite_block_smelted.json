@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_netherite_block"
+	},
+	"result": "minecraft:netherite_block",
+	"experience": 0,
+	"cookingtime": 200
+}

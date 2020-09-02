@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_emerald_block"
+	},
+	"result": "minecraft:emerald_block",
+	"experience": 0,
+	"cookingtime": 200
+}

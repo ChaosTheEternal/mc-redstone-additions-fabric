@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_chiseled_red_sandstone"
+	},
+	"result": "minecraft:chiseled_red_sandstone",
+	"experience": 0,
+	"cookingtime": 200
+}

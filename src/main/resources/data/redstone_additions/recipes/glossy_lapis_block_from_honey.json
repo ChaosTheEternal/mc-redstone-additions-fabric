@@ -1,0 +1,37 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "glossy_block",
+	"ingredients": [
+		{
+			"item": "minecraft:honey_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		},
+		{
+			"item": "minecraft:lapis_block"
+		}
+	],
+	"result": {
+		"item": "redstone_additions:glossy_lapis_block",
+		"count": 8
+	}
+}

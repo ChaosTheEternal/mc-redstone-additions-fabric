@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_chiseled_nether_bricks"
+	},
+	"result": "minecraft:chiseled_nether_bricks",
+	"experience": 0,
+	"cookingtime": 200
+}

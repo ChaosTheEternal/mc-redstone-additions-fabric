@@ -1,0 +1,37 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"group": "glossy_block",
+	"ingredients": [
+		{
+			"item": "minecraft:honey_block"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		},
+		{
+			"item": "minecraft:quartz_pillar"
+		}
+	],
+	"result": {
+		"item": "redstone_additions:glossy_quartz_pillar",
+		"count": 8
+	}
+}
