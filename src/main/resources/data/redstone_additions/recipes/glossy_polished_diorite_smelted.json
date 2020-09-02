@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_polished_diorite"
+	},
+	"result": "minecraft:polished_diorite",
+	"experience": 0,
+	"cookingtime": 200
+}

@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "redstone_additions:glossy_polished_granite"
+	},
+	"result": "minecraft:polished_granite",
+	"experience": 0,
+	"cookingtime": 200
+}

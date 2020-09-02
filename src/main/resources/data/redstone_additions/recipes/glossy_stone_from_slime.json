@@ -2,36 +2,36 @@
   "type": "minecraft:crafting_shapeless",
   "group": "glossy_block",
   "ingredients": [
-    {
-      "item": "minecraft:slime_block"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    },
-    {
-      "item": "minecraft:stone"
-    }
+		{
+			"item": "minecraft:slime_block"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		},
+		{
+			"item": "minecraft:stone"
+		}
   ],
   "result": {
-    "item": "redstone_additions:glossy_stone",
-    "count": 8
+	"item": "redstone_additions:glossy_stone",
+	"count": 8
   }
 }

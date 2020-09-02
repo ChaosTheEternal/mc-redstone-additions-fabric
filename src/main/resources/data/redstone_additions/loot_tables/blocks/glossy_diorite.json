@@ -11,8 +11,8 @@
 			} ],
 			"name": "redstone_additions:glossy_diorite"
 		} ],
-        "conditions": [ {
-            "condition": "survives_explosion"
-        } ]
+		"conditions": [ {
+			"condition": "survives_explosion"
+		} ]
 	} ]
 }

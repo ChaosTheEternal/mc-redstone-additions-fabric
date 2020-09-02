@@ -11,8 +11,8 @@
 			} ],
 			"name": "redstone_additions:glossy_stone"
 		} ],
-        "conditions": [ {
-            "condition": "survives_explosion"
-        } ]
+		"conditions": [ {
+			"condition": "survives_explosion"
+		} ]
 	} ]
 }

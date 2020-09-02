@@ -2,36 +2,36 @@
   "type": "minecraft:crafting_shapeless",
   "group": "glossy_block",
   "ingredients": [
-    {
-      "item": "minecraft:slime_block"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    },
-    {
-      "item": "minecraft:polished_andesite"
-    }
+		{
+			"item": "minecraft:slime_block"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		},
+		{
+			"item": "minecraft:polished_andesite"
+		}
   ],
   "result": {
-    "item": "redstone_additions:glossy_polished_andesite",
-    "count": 8
+	"item": "redstone_additions:glossy_polished_andesite",
+	"count": 8
   }
 }

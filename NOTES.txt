@@ -2,20 +2,11 @@ Ideas for:
     Signal Extended Observer
     * Can I hide the "countdown" property?  Or make it truly a private property of the block?
 
-    Glaze Container
-    * Need to get the emulated block stuff working, if possible
-        * What tool breaks the block, what light level the block is, what blast resistance and hardness it has
-            * This might not be possible on the Fabric side, so I may need to reconsider going the route of "breaking it places the contained block and drops the container"
-        * If/When I get light level stuff working, will this have the same issue I was having with Forge where it wouldn't tell the client to update world lighting?
-            * That might've been me, though, needing to call some method to tell it "hey, lighting changed" and I just wasn't
-    * Other option is, scrap the container logic and just make "Glazed XXX" where XXX is the block
-        * Only thinking of including solid, non-gravity afflicted blocks, e.g.
-            * Cobblestone and variants, Stone, Smooth Stone, Stone Brick (and variants)
-            * Brick
-            * Diorite, Andesite, Granite (and smooth versions)
-            * Sea Lantern and other aquatic blocks
-            * Nether related blocks, End related blocks, etc.
-        * Problem of that route is, there are a *lot* of blocks to consider or add, and may need reasons to exclude
+    Glossy Blocks
+    * I think, in the GlossyBlocks code file, I have all the blocks considered that I'll be doing
+    * Hopefully, most will be able to be handled under that single file
+        * The obvious exceptions are the ones that give off light, they'll need a separate class
+        * Or a unique constructor where I can specify the light level, with the default being 0
     * Considerations
         * In general, these are expected to be used where you would be using slime/honey blocks to move multiple blocks, so minimal visiblity
         * Cobblestone and variants

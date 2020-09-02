@@ -1,37 +1,37 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "group": "glossy_block",
-  "ingredients": [
-    {
-      "item": "minecraft:honey_block"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    },
-    {
-      "item": "minecraft:granite"
-    }
-  ],
-  "result": {
-    "item": "redstone_additions:glossy_granite",
-    "count": 8
-  }
+	"type": "minecraft:crafting_shapeless",
+	"group": "glossy_block",
+	"ingredients": [
+		{
+			"item": "minecraft:honey_block"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		},
+		{
+			"item": "minecraft:granite"
+		}
+	],
+	"result": {
+	"item": "redstone_additions:glossy_granite",
+	"count": 8
+	}
 }
