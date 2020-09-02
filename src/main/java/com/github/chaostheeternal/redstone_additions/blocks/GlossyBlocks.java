@@ -19,7 +19,6 @@ import net.minecraft.util.registry.Registry;
 
 public class GlossyBlocks {
     public static void RegisterBlocks() {
-        //TODO: Need to revisit to assign item groups correctly
         RegisterBlock("glossy_stone", ItemGroup.BUILDING_BLOCKS, new GlossyBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.STONE).requiresTool().strength(1.5F, 6.0F)));        
         RegisterBlock("glossy_smooth_stone", ItemGroup.BUILDING_BLOCKS, new GlossyBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.STONE).requiresTool().strength(2.0F, 6.0F)));
         RegisterBlock("glossy_granite", ItemGroup.BUILDING_BLOCKS, new GlossyBlock(AbstractBlock.Settings.of(Material.STONE, MaterialColor.DIRT).requiresTool().strength(1.5F, 6.0F)));

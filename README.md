@@ -15,11 +15,11 @@ May revisit the ability to lock this repeater at a later date.
 ### Signal Extended Observer
 A modified observer that can output a signal for more than one tick.
 
-## Planned Additions
-These additions are under consideration *if* their implementation seems feasible.  No planned additions are guaranteed to be part of the mod.
-
 ### Glossy Blocks
 A large set of stock blocks from Minecraft except they act like Glazed Terracotta when next to slime/honey blocks being moved by pistons.  The ability to get the original blocks will exist by putting the glossy versions through a furnace.
+
+## Planned Additions
+These additions are under consideration *if* their implementation seems feasible.  No planned additions are guaranteed to be part of the mod.
 
 ### Directed Redstone Wiring / Redstone Rods
 Some option to make running redstone vertically (up and down) easier and more compact, or to allow an option to run redstone through water.  Like a "redstone ladder" except it can also transmit power down.

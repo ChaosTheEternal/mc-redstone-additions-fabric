@@ -2,31 +2,6 @@ Ideas for:
     Signal Extended Observer
     * Can I hide the "countdown" property?  Or make it truly a private property of the block?
 
-    Glossy Blocks
-    * I think, in the GlossyBlocks code file, I have all the blocks considered that I'll be doing
-    * Unless some of the blocks I have listed have facing, everything should be able to be handled in the single file
-    * Considerations
-        * In general, these are expected to be used where you would be using slime/honey blocks to move multiple blocks, so minimal visiblity
-        * Cobblestone and variants
-            * For: it's a standard block that everyone has, variants are for appearance
-            * Against: it's supposed to simulate cobbled together stone, which would be harder to "glaze" like this
-        * Sand and Gravel (or other gravity afflicted blocks)
-            * Against: stock gravity blocks I don't believe can be pulled anyways
-        * Dirt and Grass
-            * Against: same consideration as cobblestone (glazing dirt particles?)
-        * Clay and Terracotta
-            * Against: Terracotta becomes glazed terracotta, clay is kinda like cobblestone (and becomes brick, which I would include)
-        * Stone/Smooth Stone/Stone Brick/Bricks
-            * For: it's a cleaner building block
-            * Against: ... nothing, really
-        * Diorite, Andesite, Granite (and smooth versions)
-            * For: alternatives of stone, really
-            * Against: consideration of the regular versions like cobble (though don't appear like it), otherwise these are fine
-        * Aquatic Blocks, Nether Blocks, End Blocks
-            * For: many unrefined are cleaner, refined are obvious
-            * Against: no reason except for maybe unrefined versions (netherrack, soul soil, end rock, etc.)
-        * Also, would likely need to make furnace recipes to convert the glazed versions back to regular (burning off the glaze)
-
     Directed Redstone Wiring / Redstone Rod
     * Like an end rod
         * Since 1.16.2 changed chains to be placable like end rods without light... can just fall back to "like an end rod"
