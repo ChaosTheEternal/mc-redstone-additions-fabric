@@ -1,0 +1,18 @@
+{
+	"type": "block",
+	"pools": [ {
+		"name": "redstone_rod",
+		"rolls": 1,
+		"entries": [ {
+			"type": "item",
+			"functions": [ {
+				"function": "copy_name",
+				"source": "block_entity"
+			} ],
+			"name": "redstone_additions:redstone_rod"
+		} ],
+        "conditions": [ {
+            "condition": "survives_explosion"
+        } ]
+	} ]
+}

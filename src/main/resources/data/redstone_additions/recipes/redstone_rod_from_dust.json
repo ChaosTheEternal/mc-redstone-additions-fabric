@@ -1,0 +1,15 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"R",
+        "R",
+        "R"
+	],
+	"key": {
+        "R": { "item": "redstone" }
+	},
+	"result": {
+		"item": "redstone_additions:redstone_rod",
+		"count": 1
+	}
+}

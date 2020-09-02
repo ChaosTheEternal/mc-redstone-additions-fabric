@@ -19,5 +19,6 @@ public class RedstoneAdditionsMod implements ModInitializer {
         InstantOffRepeaterBlock.RegisterBlock();
         SignalExtendedObserverBlock.RegisterBlock();
         GlossyBlocks.RegisterBlocks();
+        RedstoneRodBlock.RegisterBlock();
     }
 }

@@ -1,0 +1,30 @@
+{
+    "variants": {
+        "facing=down": {
+            "model": "redstone_additions:block/redstone_rod",
+            "x": 180
+        },
+        "facing=east": {
+            "model": "redstone_additions:block/redstone_rod",
+            "x": 90,
+            "y": 90
+        },
+        "facing=north": {
+            "model": "redstone_additions:block/redstone_rod",
+            "x": 90
+        },
+        "facing=south": {
+            "model": "redstone_additions:block/redstone_rod",
+            "x": 90,
+            "y": 180
+        },
+        "facing=up": {
+            "model": "redstone_additions:block/redstone_rod"
+        },
+        "facing=west": {
+            "model": "redstone_additions:block/redstone_rod",
+            "x": 90,
+            "y": 270
+        }
+    }
+}

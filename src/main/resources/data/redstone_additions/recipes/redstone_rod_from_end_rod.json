@@ -1,0 +1,17 @@
+{
+	"type": "crafting_shaped",
+	"pattern": [
+		"/",
+        "R",
+        "#"
+	],
+	"key": {
+        "#": { "item": "popped_chorus_fruit" },
+        "/": { "item": "blaze_rod" },
+        "R": { "item": "redstone" }
+	},
+	"result": {
+		"item": "redstone_additions:redstone_rod",
+		"count": 4
+	}
+}
