@@ -18,11 +18,11 @@ A modified observer that can output a signal for more than one tick.
 ### Glossy Blocks
 A large set of stock blocks from Minecraft except they act like Glazed Terracotta when next to slime/honey blocks being moved by pistons.  The ability to get the original blocks will exist by putting the glossy versions through a furnace.
 
+### Redstone Rods
+A chain/rod option for running redstone directly vertically easier and more compact and to allow an option to run redstone through water.  Two options exist to craft a redstone rod, either with redstone dust only or by adding redstone dust to the end rod recipe.
+
 ## Planned Additions
 These additions are under consideration *if* their implementation seems feasible.  No planned additions are guaranteed to be part of the mod.
-
-### Directed Redstone Wiring / Redstone Rods
-Some option to make running redstone vertically (up and down) easier and more compact, or to allow an option to run redstone through water.  Like a "redstone ladder" except it can also transmit power down.
 
 ### Configurable Pistons
 A modification of pistons that can be configured to have more than one block of reach and logic to also pull multiple blocks as if they were Slime or Honey blocks.

@@ -2,10 +2,8 @@ package com.github.chaostheeternal.redstone_additions.blocks;
 
 import java.util.Iterator;
 import java.util.Random;
-import java.util.Set;
 
 import com.github.chaostheeternal.redstone_additions.RedstoneAdditionsMod;
-import com.google.common.collect.Sets;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,9 +13,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.FacingBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.entity.ai.pathing.NavigationType;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -25,6 +26,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
@@ -38,36 +40,22 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
-public class RedstoneRodBlock extends FacingBlock {
+public class RedstoneRodBlock extends FacingBlock implements Waterloggable {
     protected static final VoxelShape Y_SHAPE = Block.createCuboidShape(6.0D, 0.0D, 6.0D, 10.0D, 16.0D, 10.0D);
     protected static final VoxelShape Z_SHAPE = Block.createCuboidShape(6.0D, 6.0D, 0.0D, 10.0D, 10.0D, 16.0D);
     protected static final VoxelShape X_SHAPE = Block.createCuboidShape(0.0D, 6.0D, 6.0D, 16.0D, 10.0D, 10.0D); 
     private static final Vector3f[] rgbPowerLevel;
 
-    /* TODO: Remaining tasks
-        1. Need to get "power_from" working, so the blocks can only power in one direction
-            * "power_from" will apply when a rod gets powered and should chain
-            * This will fix how it works now where it will power a block and then be powered by the block once the source turns off
-            * When a rod has 0 power, the power_from should be UP (and I'll have to have logic to ignore that on update)
-        2. Need to tweak how rods give power, so they only give in the direction "facing" but not "power_from"
-            * This is dependent on #1
-        3. Need to get the model to do the tinting correctly (so the rods appear like redstone)
-        4. Need to maybe see about adding a property so the rods know if they're attached to a wall
-            * That means I need to update it when neighbor on FACING or opposite changes
-            * That could be so I can do the caps only when the block is attached, otherwise it just hangs out
-            * Otherwise, I drop the caps entirely
-        5. Need to implement water logging
-            * Probably will look at Chain Block for that
-    */
-
-    public static final DirectionProperty POWER_FROM = DirectionProperty.of("power_from", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
+    public static final DirectionProperty POWER_TO = DirectionProperty.of("power_to", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN);
     public static final IntProperty POWER = Properties.POWER;
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final String ID = "redstone_rod";
     public static final Block BLOCK = new RedstoneRodBlock(FabricBlockSettings.of(Material.SUPPORTED).breakInstantly().sounds(BlockSoundGroup.WOOD).nonOpaque());
     protected RedstoneRodBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.UP).with(POWER_FROM, Direction.UP).with(POWER, 0));
+        this.setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.UP).with(POWER_TO, Direction.UP).with(POWER, 0).with(WATERLOGGED, false));
     }
     public static void RegisterBlock() {
         Registry.register(Registry.BLOCK, new Identifier(RedstoneAdditionsMod.MOD_ID, ID), BLOCK);
@@ -94,9 +82,11 @@ public class RedstoneRodBlock extends FacingBlock {
         }
     }
  
+    @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         Direction direction = ctx.getSide();
-        return this.getDefaultState().with(FACING, direction);
+        return this.getDefaultState().with(FACING, direction).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
  
     @Environment(EnvType.CLIENT)
@@ -123,17 +113,29 @@ public class RedstoneRodBlock extends FacingBlock {
 
     @Override
     public boolean emitsRedstonePower(BlockState state) {
-        return false; //is this what does the wire connecting?
+        return false;
     }
 
     private PowerAndDirection getReceivedRedstonePower(World world, BlockPos pos, BlockState state) {
         Direction facing = state.get(FACING);
-        int fromFace = (facing != state.get(POWER_FROM) || state.get(POWER) == 0) ? world.getEmittedRedstonePower(pos.offset(facing), facing) : 0;
-        if (fromFace != 0) { return new PowerAndDirection(fromFace, facing); }
         Direction opposite = facing.getOpposite();
-        int fromRear = (facing.getOpposite() != state.get(POWER_FROM) || state.get(POWER) == 0) ? world.getEmittedRedstonePower(pos.offset(opposite), opposite) : 0;
-        if (fromRear != 0) { return new PowerAndDirection(fromRear, opposite); }
+        int fromFace = (facing != state.get(POWER_TO) || state.get(POWER) == 0) ? world.getEmittedRedstonePower(pos.offset(facing), facing) : 0;
+        if (fromFace != 0) { return new PowerAndDirection(fromFace, opposite); }
+        int fromRear = (opposite != state.get(POWER_TO) || state.get(POWER) == 0) ? world.getEmittedRedstonePower(pos.offset(opposite), opposite) : 0;
+        if (fromRear != 0) { return new PowerAndDirection(fromRear, facing); }
         return new PowerAndDirection(0, Direction.UP);
+    }
+
+    private void update(World world, BlockPos pos, BlockState state) {
+        PowerAndDirection i = this.getReceivedRedstonePower(world, pos, state);
+        int curPower = state.get(POWER);
+        if (curPower != i.power) {
+            if (world.getBlockState(pos) == state) { world.setBlockState(pos, state.with(POWER, i.power).with(POWER_TO, i.to), 2); }
+
+            world.updateNeighborsAlways(pos, this);
+            world.updateNeighborsAlways(pos.offset(state.get(FACING)), this);
+            world.updateNeighborsAlways(pos.offset(state.get(FACING).getOpposite()), this);
+        }
     }
 
     @Override
@@ -142,58 +144,12 @@ public class RedstoneRodBlock extends FacingBlock {
         super.neighborUpdate(state, world, pos, block, fromPos, notify);
     }
 
-    public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {        
-        if ((direction == state.get(FACING) || direction == state.get(FACING).getOpposite()) && direction != state.get(POWER_FROM)) {
-            return state.get(POWER);
-        } else {
-            return 0;
-        }
-    }
-
-    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        return 0; //this doesn't directly power dust or adjacent components
-    }
-
-    private Direction getPowerFromDirection(int i, Direction facing) {
-        if (i == 0) {
-            return Direction.UP; //Reset
-        } else if (i > 0) {
-            return facing;
-        } else {
-            return facing.getOpposite();
-        }
-    }
-
-    private void update(World world, BlockPos pos, BlockState state) {
-        PowerAndDirection i = this.getReceivedRedstonePower(world, pos, state);
-        if (state.get(POWER) != i.power) {
-            if (world.getBlockState(pos) == state) { world.setBlockState(pos, state.with(POWER, i.power).with(POWER_FROM, i.powerFrom), 2); }
-
-            Set<BlockPos> set = Sets.newHashSet();
-            set.add(pos);
-            Direction[] var6 = Direction.values();
-            int var7 = var6.length;
-
-            for(int var8 = 0; var8 < var7; ++var8) {
-                Direction direction = var6[var8];
-                set.add(pos.offset(direction));
-            }
-
-            Iterator<BlockPos> var10 = set.iterator();
-
-            while(var10.hasNext()) {
-                BlockPos blockPos = (BlockPos)var10.next();
-                world.updateNeighborsAlways(blockPos, this);
-            }
-        }
-    }
-
     public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
         if (!oldState.isOf(state.getBlock()) && !world.isClient) {
             this.update(world, pos, state);
-            Iterator<Direction> var6 = Direction.Type.VERTICAL.iterator();
-            while(var6.hasNext()) {
-                Direction direction = (Direction)var6.next();
+            Iterator<Direction> vertDirections = Direction.Type.VERTICAL.iterator();
+            while(vertDirections.hasNext()) {
+                Direction direction = (Direction)vertDirections.next();
                 world.updateNeighborsAlways(pos.offset(direction), this);
             }
         }
@@ -203,20 +159,45 @@ public class RedstoneRodBlock extends FacingBlock {
         if (!moved && !state.isOf(newState.getBlock())) {
             super.onStateReplaced(state, world, pos, newState, moved);
             if (!world.isClient) {
-                Direction[] var6 = Direction.values();
-                int var7 = var6.length;
+                Direction[] allDirections = Direction.values();
+                int adLength = allDirections.length;
 
-                for(int var8 = 0; var8 < var7; ++var8) {
-                    Direction direction = var6[var8];
+                for(int i = 0; i < adLength; ++i) {
+                    Direction direction = allDirections[i];
                     world.updateNeighborsAlways(pos.offset(direction), this);
                 }
                 this.update(world, pos, state);
             }
         }
     }
+
+    public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {        
+        return getWeakRedstonePower(state, world, pos, direction);
+    }
+
+    public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
+        if (direction.getOpposite() == state.get(POWER_TO)) {
+            int power = Math.max(0, state.get(POWER) - 1); //Since I can't work like dust does (powering the block it's on to set the power level), I have to step down here'
+            return power != 0 && world.getBlockState(pos.offset(direction.getOpposite())).isSolidBlock(world, pos.offset(direction.getOpposite())) ? 15 : power;
+        } else {
+            return 0;
+        }
+    }
+//#endregion
+//#region Waterlogging
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
+        if (state.get(WATERLOGGED)) { world.getFluidTickScheduler().schedule(pos, Fluids.WATER, Fluids.WATER.getTickRate(world)); }
+        return super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
 //#endregion
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, POWER_FROM, POWER);
+        builder.add(FACING, POWER_TO, POWER, WATERLOGGED);
     }
 
     public PistonBehavior getPistonBehavior(BlockState state) {
@@ -239,12 +220,11 @@ public class RedstoneRodBlock extends FacingBlock {
     }
 
     class PowerAndDirection {
-        public PowerAndDirection(int power, Direction from) {
+        public PowerAndDirection(int power, Direction to) {
             this.power = power;
-            this.powerFrom = from;
+            this.to = to;
         }
         public int power;
-        public Direction powerFrom;
+        public Direction to;
     }
-
 }
