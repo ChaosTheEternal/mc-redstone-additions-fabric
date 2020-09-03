@@ -1,7 +1,7 @@
 # Redstone Additions
 A Fabric mod for Minecraft (targeting 1.16.2).  The intent is to add new blocks to assist and condense certain redstone circuits into single blocks.
 
-May continue work on the Forge version for 1.16 but unsure how long it will take for a stable 1.16 version of Forge.  This version is currently me porting what I did have done from Forge over to Fabric.
+May continue work on the Forge version for 1.16 but unsure how long it will take for a stable 1.16 version of Forge.  This version is currently me porting what I did have done from Forge over to Fabric and continuing from there.
 
 ## Additions
 ### Redstone Inverter
