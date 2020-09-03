@@ -1,6 +1,7 @@
 Ideas for:
     Signal Extended Observer
     * Can I hide the "countdown" property?  Or make it truly a private property of the block?
+    * The other option was to see if it's possible to cancel a scheduled tick, but it doesn't look like you can
 
     Configurable Pistons
     * First thing to figure out, can I even modify the piston retraction logic to pull more than the attached block (if piston is sticky)
@@ -15,3 +16,19 @@ Ideas for:
         * Meaning, the dust is going along the side or back, obviously it should break if it's on the side that pushes
     * Recipe?
         * Should it be as "cheap" as a normal piston or have some other cost in place of the redstone dust or iron ingot?
+
+    Anything else?
+    * On/Off Buttons
+        * Look like buttons (except maybe some redstone indicator that does tinting) but work like levers
+        * Keep the press delay of each type of button (wood and stone) but each click toggles the state instead of sends a pulse while the button is depressed
+    * Player-only Pressure Plates
+        * Basically the name, a pressure plate variant that only detects Players and nothing else
+            * No dropped items, no passive mobs, no hostile mobs
+            * Why not variants for each of those as well?  A passive mob pressure plate, a hostile mob pressure plate, and an entity pressure plate?
+                * May have to change assumptions for what is passive and what is hostile
+                * Llamas are generally passive except against wolves, but would want to consider them passive
+                * Zombie Piglins are passive unless provoked, but would probably work on the "hostile mobs" plate
+                * Iron Golems are passive or neutral depending on how they spawned
+            * Maybe stick with the "Player-only" one first
+    
+                

@@ -63,15 +63,15 @@ public class RedstoneRodBlock extends FacingBlock implements Waterloggable {
     }
 
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(FACING, rotation.rotate((Direction)state.get(FACING)));
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
  
     public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return (BlockState)state.with(FACING, mirror.apply((Direction)state.get(FACING)));
+        return state.with(FACING, mirror.apply(state.get(FACING)));
     }
  
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        switch(((Direction)state.get(FACING)).getAxis()) {
+        switch(state.get(FACING).getAxis()) {
         case X:
         default:
             return X_SHAPE;
@@ -94,7 +94,7 @@ public class RedstoneRodBlock extends FacingBlock implements Waterloggable {
         int powerLevel = state.get(POWER);
         if (powerLevel != 0) {
             Vector3f rgb = rgbPowerLevel[powerLevel];
-            Direction direction = (Direction)state.get(FACING);
+            Direction direction = state.get(FACING);
             double d = (double)pos.getX() + 0.55D - (double)(random.nextFloat() * 0.1F);
             double e = (double)pos.getY() + 0.55D - (double)(random.nextFloat() * 0.1F);
             double f = (double)pos.getZ() + 0.55D - (double)(random.nextFloat() * 0.1F);
@@ -149,7 +149,7 @@ public class RedstoneRodBlock extends FacingBlock implements Waterloggable {
             this.update(world, pos, state);
             Iterator<Direction> vertDirections = Direction.Type.VERTICAL.iterator();
             while(vertDirections.hasNext()) {
-                Direction direction = (Direction)vertDirections.next();
+                Direction direction = vertDirections.next();
                 world.updateNeighborsAlways(pos.offset(direction), this);
             }
         }
