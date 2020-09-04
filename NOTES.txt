@@ -8,10 +8,22 @@ Ideas for:
         * If I can't, then the only option for this is just "extended" pistons, which did already exist (but doesn't appear to have been updated in a long while)
         * It doesn't look at first glance that I couldn't, but it definitely doesn't look that simple
     * Will have an interface when interacted with, like a chest or furnace
+        * Problem with this is, I already was having issues with an "inventory" system with the glaze container, and that was only taking a single block
+        * This one I'd intended to have it figure out what to update the state to when the inventory changes
+        * Also, would have to make it so the inventory isn't accessible while extended (and closes if it's being accessed and it extends)
+            * If I can't get an inventory system to work, then I'd just need different versions (e.g. 2 Block Piston, 2 Block Sticky Piston, 3 Block Piston, etc.)
+            * Since 1.16 fixed zero-ticking, I hopefully wouldn't have a problem with that (though should the extend/retract be just as fast?)
+                * Making it slower means the same problem the SEO has (a visible "countdown" property), but that definitely kills zero-ticking
+                * But that may also break some other conditions
+                    * But the point of this piston (at least, the sticky version) is to avoid the setups that require chaining sticky pistons
     * On one side, you can put in (up to 4? or more?) sticks/pistons/whatever to specify how far the piston extends
     * On the other, you can put in up to the same number of slime balls/slime blocks to specify how many blocks in a line it can pull
     * The piston face will either need a specific graphic to support both or I'll have to see if you can override the model or a texture
         * If no slime, use the regular piston face, if slime, use the sticky piston face
+    * Obviously, the "pull X blocks" sticky version will only pull blocks until:
+        * It hits an air block
+        * It hits a block that can't be pulled
+        * It is pulling X blocks
     * Don't know if I can "fix" it so redstone dust doesn't break when the piston state changes and the dust is on any side except the front
         * Meaning, the dust is going along the side or back, obviously it should break if it's on the side that pushes
     * Recipe?
@@ -21,6 +33,12 @@ Ideas for:
     * On/Off Buttons
         * Look like buttons (except maybe some redstone indicator that does tinting) but work like levers
         * Keep the press delay of each type of button (wood and stone) but each click toggles the state instead of sends a pulse while the button is depressed
+        * Recipe?
+            * Regular button recipe with redstone dust on each side
+        * Just realized, including the wood options means 8 wooden buttons being made
+            * Also looks like I'd have to change quite a bit, since the button has a POWERED property which is used to determine how it appears
+            * I either make a PRESSED property that works like POWERED for display purposes (the "right" way)
+            * Or I make a POWERING property that toggles when pressed and that determines power output, while PRESSED is still used to determine appearance (the "easy" way)
     * Player-only Pressure Plates
         * Basically the name, a pressure plate variant that only detects Players and nothing else
             * No dropped items, no passive mobs, no hostile mobs
@@ -30,5 +48,6 @@ Ideas for:
                 * Zombie Piglins are passive unless provoked, but would probably work on the "hostile mobs" plate
                 * Iron Golems are passive or neutral depending on how they spawned
             * Maybe stick with the "Player-only" one first
-    
-                
+        * Recipe?
+            * I guess the question is, which pressure plate should this mimic?
+            * Stone (and Blackstone, I guess) is the closest
