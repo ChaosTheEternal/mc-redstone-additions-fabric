@@ -1,0 +1,31 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"redstone_additions:glossy_diorite_smelted"
+		]
+	},
+	"criteria": {
+		"has_glossy_diorite_block": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "redstone_additions:glossy_diorite"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "redstone_additions:glossy_diorite_smelted"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_glossy_diorite_block"
+		]
+	]
+}

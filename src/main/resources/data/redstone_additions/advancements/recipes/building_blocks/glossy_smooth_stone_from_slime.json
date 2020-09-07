@@ -1,0 +1,35 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"redstone_additions:glossy_smooth_stone_from_slime"
+		]
+	},
+	"criteria": {
+		"has_smooth_stone_and_slime_block": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:smooth_stone"
+					},
+					{
+						"item": "minecraft:slime_block"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "redstone_additions:glossy_smooth_stone_from_slime"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_smooth_stone_and_slime_block",
+			"has_the_recipe"
+		]
+	]
+}

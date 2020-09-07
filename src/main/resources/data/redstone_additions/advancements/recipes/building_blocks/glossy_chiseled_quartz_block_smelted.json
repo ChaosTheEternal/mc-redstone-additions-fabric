@@ -1,0 +1,31 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"redstone_additions:glossy_chiseled_quartz_block_smelted"
+		]
+	},
+	"criteria": {
+		"has_glossy_chiseled_quartz_block_block": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "redstone_additions:glossy_chiseled_quartz_block"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "redstone_additions:glossy_chiseled_quartz_block_smelted"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_glossy_chiseled_quartz_block_block"
+		]
+	]
+}

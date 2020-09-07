@@ -1,0 +1,35 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"redstone_additions:glossy_pink_concrete_from_honey"
+		]
+	},
+	"criteria": {
+		"has_pink_concrete_and_honey_block": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:pink_concrete"
+					},
+					{
+						"item": "minecraft:honey_block"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "redstone_additions:glossy_pink_concrete_from_honey"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_pink_concrete_and_honey_block",
+			"has_the_recipe"
+		]
+	]
+}

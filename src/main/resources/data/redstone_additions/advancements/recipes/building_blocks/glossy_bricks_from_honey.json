@@ -1,0 +1,35 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": {
+		"recipes": [
+			"redstone_additions:glossy_bricks_from_honey"
+		]
+	},
+	"criteria": {
+		"has_bricks_and_honey_block": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"item": "minecraft:bricks"
+					},
+					{
+						"item": "minecraft:honey_block"
+					}
+				]
+			}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": {
+				"recipe": "redstone_additions:glossy_bricks_from_honey"
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_bricks_and_honey_block",
+			"has_the_recipe"
+		]
+	]
+}
