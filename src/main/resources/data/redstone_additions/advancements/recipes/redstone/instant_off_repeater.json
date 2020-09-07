@@ -9,19 +9,19 @@
         "has_redstone_torch": {
             "trigger": "minecraft:inventory_changed",
             "conditions": {
-            "items": [
-                {
-                    "item": "minecraft:redstone_torch"
-                }
-            ]
+                "items": [
+                    {
+                        "item": "minecraft:redstone_torch"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "redstone_additions:instant_off_repeater"
+            }
         }
-    },
-    "has_the_recipe": {
-        "trigger": "minecraft:recipe_unlocked",
-        "conditions": {
-            "recipe": "redstone_additions:instant_off_repeater"
-        }
-    }
     },
     "requirements": [
         [
