@@ -25,7 +25,8 @@
 	},
 	"requirements": [
 		[
-			"has_glossy_polished_blackstone_bricks_block"
+			"has_glossy_polished_blackstone_bricks_block",
+			"has_the_recipe"
 		]
 	]
 }

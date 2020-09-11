@@ -110,6 +110,11 @@ public class RedstoneRodBlock extends FacingBlock implements Waterloggable {
         Vector3f vector3f = rgbPowerLevel[state.get(POWER)];
         return MathHelper.packRgb(vector3f.getX(), vector3f.getY(), vector3f.getZ());
     }
+    @Environment(EnvType.CLIENT)
+    public static int getItemColor() {
+        Vector3f vector3f = rgbPowerLevel[0];
+        return MathHelper.packRgb(vector3f.getX(), vector3f.getY(), vector3f.getZ());
+    }
 
     @Override
     public boolean emitsRedstonePower(BlockState state) {

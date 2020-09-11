@@ -25,7 +25,8 @@
 	},
 	"requirements": [
 		[
-			"has_glossy_red_concrete_block"
+			"has_glossy_red_concrete_block",
+			"has_the_recipe"
 		]
 	]
 }

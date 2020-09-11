@@ -25,7 +25,8 @@
 	},
 	"requirements": [
 		[
-			"has_glossy_prismarine_bricks_block"
+			"has_glossy_prismarine_bricks_block",
+			"has_the_recipe"
 		]
 	]
 }

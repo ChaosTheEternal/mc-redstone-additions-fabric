@@ -6,6 +6,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.item.Item;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,5 +20,6 @@ public class RedstoneAdditionsModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(InstantOffRepeaterBlock.BLOCK, RenderLayer.getCutout());
         ColorProviderRegistry.BLOCK.register((state, pos, world, layer) -> InstantOffRepeaterBlock.getWireColor(state), InstantOffRepeaterBlock.BLOCK);
         ColorProviderRegistry.BLOCK.register((state, pos, world, layer) -> RedstoneRodBlock.getWireColor(state), RedstoneRodBlock.BLOCK);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> RedstoneRodBlock.getItemColor(), Item.fromBlock(RedstoneRodBlock.BLOCK));
     }
 }
